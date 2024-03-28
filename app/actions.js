@@ -129,6 +129,7 @@ export async function answer_question(attempt_id, given_answer) {
     } WHERE attempt_id = ${attempt_id}`;
   }
   if (response.rows[0].completed == response.rows[0].start_ids.length) {
-    await sql`UPDATE attempts SET response_code = 4, end_timestamp = CURRENT_TIMESTAMP WHERE attempt_id = ${attempt_id}`;
+    await sql`UPDATE attempts SET response_code = 3, end_timestamp = CURRENT_TIMESTAMP WHERE attempt_id = ${attempt_id}`;
   }
+  revalidatePath(`/attempt/${attempt_id}`);
 }
