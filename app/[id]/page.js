@@ -1,3 +1,4 @@
+import QuestionCard from "@/components/question_card";
 import { sql } from "@vercel/postgres";
 
 export default async function SetPage({ params }) {
@@ -10,5 +11,17 @@ export default async function SetPage({ params }) {
   }
   const relevant_questions =
     await sql`SELECT * FROM questions WHERE set_id = ${my_id}`;
-  return <h1>{row_ct.rows[0].set_name}</h1>;
+  return (
+    <>
+      <h1>{row_ct.rows[0].set_name}</h1>
+      {relevant_questions.rows.map((prev) => (
+        <QuestionCard
+          id={prev.question_id}
+          question={prev.question}
+          answers={prev.answers}
+          type={prev.type}
+        />
+      ))}
+    </>
+  );
 }
