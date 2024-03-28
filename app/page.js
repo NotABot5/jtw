@@ -1,6 +1,6 @@
 import { sql } from "@vercel/postgres";
 import SetCard from "@/components/set_card";
-import AddTextQuestion from "@/components/add_text_question";
+import AddSet from "@/components/add_set";
 
 export default async function Home() {
   const set_list = await sql`SELECT * FROM sets WHERE invalidated = FALSE`;
@@ -14,6 +14,7 @@ export default async function Home() {
           <SetCard id={prev.set_id} name={prev.set_name} key={prev.set_id} />
         );
       })}
+      <AddSet />
     </>
   );
 }

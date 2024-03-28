@@ -4,14 +4,15 @@ import AddTextQuestion from "@/components/add_text_question";
 
 export default async function SetPage({ params }) {
   const my_id = params.id;
-  const row_ct = await sql`SELECT * FROM sets WHERE set_id = ${my_id}`;
+  const row_ct =
+    await sql`SELECT * FROM sets WHERE set_id = ${my_id} AND invalidated = FALSE`;
   if (row_ct.rowCount == 0) {
     return (
       <h1>This page does not exist. You probably entered the wrong set id</h1>
     );
   }
   const relevant_questions =
-    await sql`SELECT * FROM questions WHERE set_id = ${my_id}`;
+    await sql`SELECT * FROM questions WHERE set_id = ${my_id} AND invalidated = FALSE`;
   return (
     <>
       <h1>{row_ct.rows[0].set_name}</h1>

@@ -18,7 +18,7 @@ export async function create_question(set_id, question, answers, type = 1) {
   let a = "{";
   let b = JSON.stringify(answers);
   let c = a.concat(b.slice(1, b.length - 1).concat("}"));
-  await sql`INSERT INTO questions VALUES (${gen_id}, ${set_id}, ${type}, ${question}, ${c})`;
+  await sql`INSERT INTO questions VALUES (${gen_id}, ${set_id}, ${type}, ${question}, ${c}, false)`;
   revalidatePath(`/${set_id}`);
 }
 
