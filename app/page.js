@@ -1,21 +1,15 @@
-"use client";
-import { create_question, create_set } from "./actions";
+import { sql } from "@vercel/postgres";
+import SetCard from "@/components/set_card";
 
-export default function Home() {
+export default async function Home() {
+  const set_list = await sql`SELECT * FROM sets WHERE invalidated = FALSE`;
   return (
     <>
-      <button onClick={() => create_set("test")}>Create set</button>
-      <button
-        onClick={() =>
-          create_question(
-            1328520828,
-            "Test question",
-            '{"test_answer1", "test_answer2"}'
-          )
-        }
-      >
-        Create sample question
-      </button>
+      {set_list.rows.map((prev) => {
+        return (
+          <SetCard id={prev.set_id} name={prev.set_name} key={prev.set_id} />
+        );
+      })}
     </>
   );
 }
