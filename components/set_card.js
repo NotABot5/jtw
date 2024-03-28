@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SetInvalidation from "./set_invalidation";
 
 export default function SetCard({ name, id }) {
   return (
@@ -6,6 +7,7 @@ export default function SetCard({ name, id }) {
       <Link href={`/${id}`}>
         <button>{name}</button>
       </Link>
+      <SetInvalidation id={id} />
     </div>
   );
 }

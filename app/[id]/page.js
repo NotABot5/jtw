@@ -10,6 +10,5 @@ export default async function SetPage({ params }) {
   }
   const relevant_questions =
     await sql`SELECT * FROM questions WHERE set_id = ${my_id}`;
-  //console.log(relevant_questions);
   return <h1>{row_ct.rows[0].set_name}</h1>;
 }
