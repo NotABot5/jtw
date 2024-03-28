@@ -1,6 +1,7 @@
 import QuestionCard from "@/components/questions/question_card";
 import { sql } from "@vercel/postgres";
 import AddQuestionsBox from "@/components/questionDialogs/add_questions_box";
+import StartAttemptButton from "@/components/attempts/start_attempt_button";
 
 export default async function SetPage({ params }) {
   const my_id = params.id;
@@ -26,6 +27,10 @@ export default async function SetPage({ params }) {
         />
       ))}
       <AddQuestionsBox set_id={my_id} />
+      <StartAttemptButton
+        set_id={my_id}
+        questions_in_set={relevant_questions.rows.map((prev) => prev.id)}
+      />
     </>
   );
 }

@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import StyledDialog from "../styled_dialog";
 
 export default function AddListQuestion({ set_id, setAlertUser }) {
-  //add user alerts
   const [pytanie, setPytanie] = useState("");
   const [odpowiedzi, setOdpowiedzi] = useState([""]);
   const router = useRouter();
