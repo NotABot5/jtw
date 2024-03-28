@@ -1,3 +1,5 @@
-export default function Page() {
-  return <h1>xd</h1>;
+import Attempt from "@/components/attempts/attempt";
+
+export default function Page({ params }) {
+  return <Attempt attempt_id={params.id} />;
 }

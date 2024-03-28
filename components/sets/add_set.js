@@ -6,6 +6,7 @@ import { create_set } from "@/app/actions";
 import { useRouter } from "next/navigation";
 
 export default function AddSet() {
+  //Add verification
   const [nazwa, setNazwa] = useState("");
   const router = useRouter();
   return (

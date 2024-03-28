@@ -109,14 +109,17 @@ export async function answer_question(attempt_id, given_answer) {
     const result2 = question.answers
       .map((prev) => make_basic_string(prev))
       .sort();
-    if (result1 == result2) {
+    if (JSON.stringify(result1) == JSON.stringify(result2)) {
       question_correct = true;
     }
   }
-
   if (question_correct) {
     let p = response.rows[0].correct_answer_ids;
-    p.push(question_id);
+    if (p == null) {
+      p = [question_id];
+    } else {
+      p.push(question_id);
+    }
 
     await sql`UPDATE attempts SET correct_answer_ids=${JSON.stringify(p)
       .replace("[", "{")
@@ -128,7 +131,7 @@ export async function answer_question(attempt_id, given_answer) {
       response.rows[0].completed + 1
     } WHERE attempt_id = ${attempt_id}`;
   }
-  if (response.rows[0].completed == response.rows[0].start_ids.length) {
+  if (response.rows[0].completed + 1 >= response.rows[0].start_ids.length) {
     await sql`UPDATE attempts SET response_code = 3, end_timestamp = CURRENT_TIMESTAMP WHERE attempt_id = ${attempt_id}`;
   }
   revalidatePath(`/attempt/${attempt_id}`);
