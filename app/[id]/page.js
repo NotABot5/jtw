@@ -1,6 +1,6 @@
 import QuestionCard from "@/components/question_card";
 import { sql } from "@vercel/postgres";
-import AddTextQuestion from "@/components/add_text_question";
+import AddQuestionsBox from "@/components/questionDialogs/add_questions_box";
 
 export default async function SetPage({ params }) {
   const my_id = params.id;
@@ -24,7 +24,7 @@ export default async function SetPage({ params }) {
           type={prev.type}
         />
       ))}
-      <AddTextQuestion set_id={params.id} />
+      <AddQuestionsBox set_id={my_id} />
     </>
   );
 }
