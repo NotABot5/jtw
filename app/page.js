@@ -1,6 +1,6 @@
 import { sql } from "@vercel/postgres";
-import SetCard from "@/components/set_card";
-import AddSet from "@/components/add_set";
+import SetCard from "@/components/sets/set_card";
+import AddSet from "@/components/sets/add_set";
 
 export default async function Home() {
   const set_list = await sql`SELECT * FROM sets WHERE invalidated = FALSE`;

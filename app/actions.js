@@ -26,3 +26,8 @@ export async function invalidate_set(set_id) {
   await sql`UPDATE sets SET invalidated = true WHERE set_id = ${set_id}`;
   revalidatePath("/");
 }
+
+export async function invalidate_question(question_id, set_id) {
+  await sql`UPDATE questions SET invalidated = true WHERE question_id = ${question_id}`;
+  revalidatePath(`/${set_id}`);
+}

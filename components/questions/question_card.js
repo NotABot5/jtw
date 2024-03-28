@@ -1,4 +1,6 @@
-export default function QuestionCard({ id, type, question, answers }) {
+import QuestionInvalidation from "./question_invalidation";
+
+export default function QuestionCard({ id, set_id, type, question, answers }) {
   return (
     <div>
       {type} {question} {"=> {"}{" "}
@@ -6,6 +8,7 @@ export default function QuestionCard({ id, type, question, answers }) {
         <h2 className="inline" key={index}>{`${prev}, `}</h2>
       ))}{" "}
       {"}"}
+      <QuestionInvalidation id={id} set_id={set_id} />
     </div>
   );
 }

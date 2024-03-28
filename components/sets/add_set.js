@@ -1,6 +1,6 @@
 "use client";
-import StyledDialog from "./styled_dialog";
-import Input from "./input";
+import StyledDialog from "../styled_dialog";
+import Input from "../input";
 import { useState } from "react";
 import { create_set } from "@/app/actions";
 import { useRouter } from "next/navigation";
