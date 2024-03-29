@@ -14,7 +14,22 @@ export default async function Attempt({ attempt_id }) {
     comment = "Poprawna odpowiedź";
   }
   if (response.response_code == 3) {
-    return <h1>Quiz zakończony</h1>;
+    const date_diff = response.end_timestamp - response.timestamp_start;
+    const m = Math.floor(date_diff / 60000);
+    const s = Math.floor(date_diff / 1000) - m * 60;
+    const correct = response.correct_answer_ids.length;
+    const all = response.start_ids.length;
+    const percentage = Math.round((correct / all) * 1000) / 10;
+    return (
+      <>
+        <h1>
+          Quiz zakończony w czasie {m != 0 && `${m}m`} {s}s
+        </h1>
+        <h1>
+          Poprawne odpowiedzi: {correct}/{all} {`(${percentage}%)`}
+        </h1>
+      </>
+    );
   }
   const question_id = response.start_ids[response.completed];
   const question = (
@@ -35,5 +50,4 @@ export default async function Attempt({ attempt_id }) {
       )}
     </div>
   );
-  return <h1>s</h1>;
 }
