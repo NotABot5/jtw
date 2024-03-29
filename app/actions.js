@@ -76,7 +76,7 @@ export async function answer_question(attempt_id, given_answer) {
   if (question.type == 1) {
     const result1 = make_basic_string(given_answer);
     const result2 = question.answers.map((prev) => make_basic_string(prev));
-    if (result2.contains(result1)) {
+    if (result2.includes(result1)) {
       question_correct = true;
     }
   }

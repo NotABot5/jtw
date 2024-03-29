@@ -5,7 +5,7 @@ export default function QuestionCard({ id, set_id, type, question, answers }) {
     <div>
       {type} {question} {"=> {"}{" "}
       {answers.map((prev, index) => (
-        <h2 className="inline" key={index}>{`${prev}, `}</h2>
+        <h2 className="inline" key={crypto.randomUUID()}>{`${prev}, `}</h2>
       ))}{" "}
       {"}"}
       <QuestionInvalidation id={id} set_id={set_id} />
