@@ -6,23 +6,31 @@ import { create_set } from "@/app/actions";
 import { useRouter } from "next/navigation";
 
 export default function AddSet() {
-  //Add verification
   const [nazwa, setNazwa] = useState("");
+  const [alertUser, setAlertUser] = useState(false);
   const router = useRouter();
   return (
-    <StyledDialog
-      title="Nowy zestaw"
-      description="Tu podaj dane do nowego zestawu"
-      trigger_text="Dodaj zestaw"
-      closeButtonAction={() => {
-        create_set(nazwa);
-        router.refresh();
-      }}
-      closeButtonText="Dodaj zestaw"
-    >
-      <Input id="zestaw" value={nazwa} setValue={setNazwa}>
-        Nazwa zestawu
-      </Input>
-    </StyledDialog>
+    <>
+      {alertUser && <h1>Nie podano nazwy zestawu</h1>}
+      <StyledDialog
+        title="Nowy zestaw"
+        description="Tu podaj dane do nowego zestawu"
+        trigger_text="Dodaj zestaw"
+        closeButtonAction={() => {
+          if (nazwa == "") {
+            setAlertUser(true);
+            return;
+          }
+          create_set(nazwa);
+          setAlertUser(false);
+          router.refresh();
+        }}
+        closeButtonText="Dodaj zestaw"
+      >
+        <Input id="zestaw" value={nazwa} setValue={setNazwa}>
+          Nazwa zestawu
+        </Input>
+      </StyledDialog>
+    </>
   );
 }

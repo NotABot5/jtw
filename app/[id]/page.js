@@ -28,16 +28,18 @@ export default async function SetPage({ params }) {
         />
       ))}
       <AddQuestionsBox set_id={my_id} />
-      <StartAttemptButton
-        set_id={my_id}
-        questions_in_set={relevant_questions.rows
-          .map((prev) => {
-            return prev.question_id;
-          })
-          .map((value) => ({ value, sort: Math.random() }))
-          .sort((a, b) => a.sort - b.sort)
-          .map(({ value }) => value)}
-      />
+      {relevant_questions.rowCount > 0 && (
+        <StartAttemptButton
+          set_id={my_id}
+          questions_in_set={relevant_questions.rows
+            .map((prev) => {
+              return prev.question_id;
+            })
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value)}
+        />
+      )}
     </>
   );
 }

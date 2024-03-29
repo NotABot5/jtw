@@ -22,20 +22,21 @@ export default function MultiInput({ children, value, setValue }) {
     });
   };
   return (
-    <fieldset className="m-4 flex items-center gap-5">
+    <fieldset className="m-4 block">
       <label>{children}</label>
       {value.map((prev, index) => {
         return (
-          <div key={crypto.randomUUID()}>
+          <div key={crypto.randomUUID()} className="m-2">
             <input
               value={prev}
               onChange={(event) => handleChange(index, event)}
+              className="m-2"
             />
             <button onClick={() => remove(index)}>-</button>
           </div>
         );
       })}
-      <button onClick={() => add()}>+</button>
+      {value.length < 8 && <button onClick={() => add()}>+</button>}
     </fieldset>
   );
 }
