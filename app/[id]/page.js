@@ -24,6 +24,7 @@ export default async function SetPage({ params }) {
           answers={prev.answers}
           type={prev.type}
           set_id={my_id}
+          key={crypto.randomUUID()}
         />
       ))}
       <AddQuestionsBox set_id={my_id} />

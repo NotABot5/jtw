@@ -26,13 +26,13 @@ export default function MultiInput({ children, value, setValue }) {
       <label>{children}</label>
       {value.map((prev, index) => {
         return (
-          <>
+          <div key={crypto.randomUUID()}>
             <input
               value={prev}
               onChange={(event) => handleChange(index, event)}
             />
             <button onClick={() => remove(index)}>-</button>
-          </>
+          </div>
         );
       })}
       <button onClick={() => add()}>+</button>

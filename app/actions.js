@@ -72,7 +72,6 @@ export async function answer_question(attempt_id, given_answer) {
     await sql`SELECT * FROM questions WHERE question_id = ${question_id}`
   ).rows[0];
   let question_correct = false;
-  console.log(question);
   if (question.type == 1) {
     const result1 = make_basic_string(given_answer);
     const result2 = question.answers.map((prev) => make_basic_string(prev));
