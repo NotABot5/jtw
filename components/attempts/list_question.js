@@ -4,21 +4,58 @@ import MultiInput from "../multi_input";
 import Button from "../button";
 import { answer_question } from "@/app/actions";
 
-export default function ListQuestion({ question, attempt_id }) {
+function make_basic_string(s1) {
+  return s1
+    .toLowerCase()
+    .replace(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, "")
+    .replace("ę", "e")
+    .replace("ó", "o")
+    .replace("ą", "a")
+    .replace("ś", "s")
+    .replace("ł", "l")
+    .replace("ż", "z")
+    .replace("ź", "z")
+    .replace("ń", "n")
+    .replace("ć", "c");
+}
+
+export default function ListQuestion({ question, attempt_id, prevalidated }) {
   const [answers, setAnswers] = useState([""]);
+  const [showStatus, setShowStatus] = useState(0);
   return (
-    <div>
-      <h1>{question}</h1>
-      <MultiInput value={answers} setValue={setAnswers}>
-        Odpowiedzi
-      </MultiInput>
-      <Button
-        onClick={() => {
-          answer_question(attempt_id, answers);
-        }}
-      >
-        Odpowiedz
-      </Button>
-    </div>
+    <>
+      {showStatus == 0 && (
+        <div>
+          <h1>{question}</h1>
+          <MultiInput value={answers} setValue={setAnswers}>
+            Odpowiedzi
+          </MultiInput>
+          <Button
+            onClick={() => {
+              let question_correct = false;
+              const result1 = answers
+                .map((prev) => make_basic_string(prev))
+                .sort();
+              const result2 = prevalidated
+                .map((prev) => make_basic_string(prev))
+                .sort();
+              if (JSON.stringify(result1) == JSON.stringify(result2)) {
+                question_correct = true;
+              }
+              if (question_correct) {
+                setShowStatus(1);
+              } else {
+                setShowStatus(2);
+              }
+              answer_question(attempt_id, question_correct);
+            }}
+          >
+            Odpowiedz
+          </Button>
+        </div>
+      )}
+      {showStatus == 1 && <h1>Poprawna odpowiedź</h1>}
+      {showStatus == 2 && <h1>Nieprawidłowa odpowiedź</h1>}
+    </>
   );
 }
