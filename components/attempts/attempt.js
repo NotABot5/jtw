@@ -17,7 +17,10 @@ export default async function Attempt({ attempt_id }) {
     const date_diff = response.end_timestamp - response.timestamp_start;
     const m = Math.floor(date_diff / 60000);
     const s = Math.floor(date_diff / 1000) - m * 60;
-    const correct = response.correct_answer_ids.length;
+    const correct =
+      response.correct_answer_ids == null
+        ? 0
+        : response.correct_answer_ids.length;
     const all = response.start_ids.length;
     const percentage = Math.round((correct / all) * 1000) / 10;
     return (
@@ -40,13 +43,26 @@ export default async function Attempt({ attempt_id }) {
     <div>
       <h1>{comment}</h1>
       {type == 1 && (
-        <TextQuestion question={question.question} attempt_id={attempt_id} />
+        <TextQuestion
+          question={question.question}
+          attempt_id={attempt_id}
+          prevalidated={question.answers}
+        />
       )}
       {type == 2 && (
-        <ListQuestion question={question.question} attempt_id={attempt_id} />
+        <ListQuestion
+          question={question.question}
+          attempt_id={attempt_id}
+          prevalidated={question.answers}
+        />
       )}
       {type == 3 && (
-        <DateQuestion question={question.question} attempt_id={attempt_id} />
+        <DateQuestion
+          question={question.question}
+          attempt_id={attempt_id}
+          fragments_specified={question.answers.length}
+          prevalidated={question.answers}
+        />
       )}
     </div>
   );
