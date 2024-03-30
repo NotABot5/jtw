@@ -14,8 +14,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Link href="/">Back to homepage</Link>
-        {children}
+        <Link href="/">
+          <h1 className="text-center text-cyan-800 text-2xl m-2 font-black">
+            JTW
+          </h1>
+          <hr />
+        </Link>
+        <div className="text-center mx-auto max-w-[640px] w-2/3 mt-4 my-2">
+          {children}
+        </div>
       </body>
     </html>
   );

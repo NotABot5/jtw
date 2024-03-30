@@ -13,7 +13,7 @@ export default function Input({
       </label>
       <input
         id={id}
-        className="p-1 m-1 rounded border border-slate-400 w-2/3 text-cyan-800 focus:border-cyan-800"
+        className="p-1 m-1 rounded border border-slate-400 w-2/3 text-cyan-800"
         value={value}
         onChange={(event) => {
           setValue(event.target.value);

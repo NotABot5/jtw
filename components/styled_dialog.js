@@ -16,8 +16,8 @@ export default function StyledDialog({
         <Button>{trigger_text}</Button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-slate-950 opacity-40 fixed inset-0 animate-fade" />
-        <Dialog.Content className="animate-appear fixed pt-3 top-[50%] left-[50%] max-h-[85vh] w-[90vw] shadow-lg border-solid border-2 border-cyan-800 max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded bg-white p-4 focus:out">
+        <Dialog.Overlay className=" bg-slate-950 opacity-40 fixed inset-0 animate-fade" />
+        <Dialog.Content className="animate-appear fixed pt-3 top-[50%] left-[50%] max-h-[85vh] w-[90vw] shadow-lg border-solid border-2 border-cyan-800 max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-4 focus:out">
           <Dialog.Title className="text-2xl font-semibold text-cyan-800">
             {title}
           </Dialog.Title>

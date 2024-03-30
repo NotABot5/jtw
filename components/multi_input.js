@@ -35,7 +35,7 @@ export default function MultiInput({ children, value, setValue }) {
             <input
               value={prev}
               onChange={(event) => handleChange(index, event)}
-              className="p-1 mr-2 rounded border border-slate-400 w-5/6 text-cyan-800 focus:border-cyan-800"
+              className="p-1 mr-2 rounded border border-slate-400 w-5/6 text-cyan-800"
             />
             <button
               className="justify-self-end rounded font-normal bg-white border border-slate-400 text-cyan-800 text-xl w-8 h-8 flex items-center justify-center hover:bg-cyan-700 transition-all"
