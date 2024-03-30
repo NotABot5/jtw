@@ -12,8 +12,8 @@ export default async function Home() {
       <h3 className="text-xs mb-2 text-slate-400">
         Aby dodać pytania, wejdź do istniejącego zestawu lub stwórz nowy
       </h3>
-      <div className="flex justify-center items-center w-1/2">
-        <div className="">
+      <div className="flex justify-center items-center w-full">
+        <div className="w-full max-w-[360px]">
           {set_list.rows.map((prev) => {
             return (
               <SetCard
