@@ -7,10 +7,13 @@ export default function Input({
   placeholder = "",
 }) {
   return (
-    <fieldset className="m-4 flex items-center gap-5">
-      <label htmlFor={id}>{children}</label>
+    <fieldset className="my-4 mx-2 flex items-center justify-center gap-5">
+      <label htmlFor={id} className=" text-cyan-800 w-1/3 font-medium">
+        {children}
+      </label>
       <input
         id={id}
+        className="p-1 m-1 rounded border border-slate-400 w-2/3 text-cyan-800 focus:border-cyan-800"
         value={value}
         onChange={(event) => {
           setValue(event.target.value);

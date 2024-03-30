@@ -32,7 +32,7 @@ export default function AddListQuestion({ set_id, setAlertUser }) {
         Treść pytania
       </Input>
       <MultiInput value={odpowiedzi} setValue={setOdpowiedzi}>
-        Do wymienienia:
+        Do wymienienia
       </MultiInput>
     </StyledDialog>
   );

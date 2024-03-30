@@ -32,7 +32,7 @@ export default function AddTextQuestion({ set_id, setAlertUser }) {
         Treść pytania
       </Input>
       <MultiInput value={odpowiedzi} setValue={setOdpowiedzi}>
-        Możliwe odpowiedzi:
+        Możliwe odpowiedzi
       </MultiInput>
     </StyledDialog>
   );

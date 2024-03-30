@@ -4,6 +4,7 @@ import { useState } from "react";
 import { create_question } from "@/app/actions";
 import { useRouter } from "next/navigation";
 import StyledDialog from "../styled_dialog";
+import OptionalTag from "../optional_tag";
 
 export default function AddDateQuestion({ set_id, setAlertUser }) {
   const [pytanie, setPytanie] = useState("");
@@ -45,11 +46,13 @@ export default function AddDateQuestion({ set_id, setAlertUser }) {
       <Input value={rok} setValue={setRok}>
         Rok
       </Input>
-      <Input value={miesiac} setValue={setMiesiac}>
-        Miesiąc {"(opcjonalnie)"}
+      <Input value={miesiac} setValue={setMiesiac} className="leading-none">
+        Miesiąc
+        <OptionalTag />
       </Input>
       <Input value={dzien} setValue={setDzien}>
-        Dzień {"(opcjonalnie)"}
+        Dzień
+        <OptionalTag />
       </Input>
     </StyledDialog>
   );

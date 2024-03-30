@@ -7,10 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      animation: {
+        appear: "shiftIn .15s ease-out",
+        fade: "fadeIn .15s ease-out",
+      },
+      keyframes: {
+        shiftIn: {
+          from: {
+            opacity: 0,
+            top: "49%",
+          },
+          to: { opacity: 1 },
+        },
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 0.4 },
+        },
       },
     },
   },
