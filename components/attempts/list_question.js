@@ -3,6 +3,7 @@ import { useState } from "react";
 import Input from "../input";
 import Button from "../button";
 import { answer_question } from "@/app/actions";
+import BasicInput from "../basic_input";
 
 function make_basic_string(s1) {
   return s1
@@ -27,9 +28,7 @@ export default function ListQuestion({ question, attempt_id, prevalidated }) {
       {showStatus == 0 && (
         <div>
           <h1>{question}</h1>
-          <Input value={answer} setValue={setAnswer}>
-            Odpowiedzi
-          </Input>
+          <BasicInput value={answer} setValue={setAnswer} />
           <Button
             onClick={() => {
               let question_correct = false;
