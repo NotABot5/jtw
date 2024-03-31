@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import MultiInput from "../multi_input";
+import Input from "../input";
 import Button from "../button";
 import { answer_question } from "@/app/actions";
 
 function make_basic_string(s1) {
   return s1
     .toLowerCase()
-    .replace(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, "")
+    .replace(/[\s~`!@#$%^&*(){}\[\];:"'<.>?\/\\|_+=-]/g, "")
     .replace("ę", "e")
     .replace("ó", "o")
     .replace("ą", "a")
@@ -20,25 +20,28 @@ function make_basic_string(s1) {
 }
 
 export default function ListQuestion({ question, attempt_id, prevalidated }) {
-  const [answers, setAnswers] = useState([""]);
+  const [answer, setAnswer] = useState("");
   const [showStatus, setShowStatus] = useState(0);
   return (
     <>
       {showStatus == 0 && (
         <div>
           <h1>{question}</h1>
-          <MultiInput value={answers} setValue={setAnswers}>
+          <Input value={answer} setValue={setAnswer}>
             Odpowiedzi
-          </MultiInput>
+          </Input>
           <Button
             onClick={() => {
               let question_correct = false;
-              const result1 = answers
+              const result1 = make_basic_string(answer)
+                .split(",")
                 .map((prev) => make_basic_string(prev))
                 .sort();
+              console.log(result1);
               const result2 = prevalidated
                 .map((prev) => make_basic_string(prev))
                 .sort();
+              console.log(result2);
               if (JSON.stringify(result1) == JSON.stringify(result2)) {
                 question_correct = true;
               }
