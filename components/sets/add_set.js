@@ -11,13 +11,17 @@ export default function AddSet() {
   const router = useRouter();
   return (
     <>
-      {alertUser && <h1>Nie podano nazwy zestawu</h1>}
+      {alertUser && (
+        <h1 className="text-xs text-red-600">
+          Nie podano nazwy zestawu lub nazwa jest za długa
+        </h1>
+      )}
       <StyledDialog
         title="Nowy zestaw"
         description="Tu podaj dane do nowego zestawu"
         trigger_text="Dodaj zestaw"
         closeButtonAction={() => {
-          if (nazwa == "") {
+          if (nazwa == "" || nazwa.length > 30) {
             setAlertUser(true);
             return;
           }
