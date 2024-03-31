@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import Input from "../input";
+import { useState, useEffect } from "react";
 import Button from "../button";
 import { answer_question } from "@/app/actions";
 import BasicInput from "../basic_input";
@@ -23,6 +22,32 @@ function make_basic_string(s1) {
 export default function TextQuestion({ question, attempt_id, prevalidated }) {
   const [answer, setAnswer] = useState("");
   const [showStatus, setShowStatus] = useState(0);
+  const submission = () => {
+    let question_correct = false;
+    const result1 = make_basic_string(answer);
+    const result2 = prevalidated.map((prev) => make_basic_string(prev));
+    if (result2.includes(result1)) {
+      question_correct = true;
+    }
+    if (question_correct) {
+      setShowStatus(1);
+    } else {
+      setShowStatus(2);
+    }
+    answer_question(attempt_id, question_correct);
+  };
+  useEffect(() => {
+    const ls = (event) => {
+      if (event.code == "Enter") {
+        event.preventDefault();
+        submission();
+      }
+    };
+    document.addEventListener("keydown", ls);
+    return () => {
+      document.removeEventListener("keydown", ls);
+    };
+  }, [answer]);
   return (
     <>
       {showStatus == 0 && (
@@ -31,20 +56,7 @@ export default function TextQuestion({ question, attempt_id, prevalidated }) {
           <BasicInput value={answer} setValue={setAnswer} id="odp" />
           <Button
             onClick={() => {
-              let question_correct = false;
-              const result1 = make_basic_string(answer);
-              const result2 = prevalidated.map((prev) =>
-                make_basic_string(prev)
-              );
-              if (result2.includes(result1)) {
-                question_correct = true;
-              }
-              if (question_correct) {
-                setShowStatus(1);
-              } else {
-                setShowStatus(2);
-              }
-              answer_question(attempt_id, question_correct);
+              submission();
             }}
           >
             Odpowiedz

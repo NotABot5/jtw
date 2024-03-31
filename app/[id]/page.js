@@ -10,7 +10,7 @@ export default async function SetPage({ params }) {
   if (row_ct.rowCount == 0) {
     return (
       <h1 className="text-2xl font-semibold text-cyan-800">
-        This page does not exist. You probably entered the wrong set id
+        Ta strona nie istnieje
       </h1>
     );
   }

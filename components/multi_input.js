@@ -34,7 +34,6 @@ export default function MultiInput({ children, value, setValue }) {
           >
             <input
               value={prev}
-              autoFocus
               onChange={(event) => handleChange(index, event)}
               className="p-1 mr-2 rounded border border-slate-400 w-5/6 text-cyan-800"
             />
