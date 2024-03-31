@@ -9,14 +9,18 @@ export default async function SetPage({ params }) {
     await sql`SELECT * FROM sets WHERE set_id = ${my_id} AND invalidated = FALSE`;
   if (row_ct.rowCount == 0) {
     return (
-      <h1>This page does not exist. You probably entered the wrong set id</h1>
+      <h1 className="text-2xl font-semibold text-cyan-800">
+        This page does not exist. You probably entered the wrong set id
+      </h1>
     );
   }
   const relevant_questions =
     await sql`SELECT * FROM questions WHERE set_id = ${my_id} AND invalidated = FALSE`;
   return (
     <>
-      <h1>{row_ct.rows[0].set_name}</h1>
+      <h1 className="text-2xl font-semibold text-cyan-800">
+        {row_ct.rows[0].set_name}
+      </h1>
       {relevant_questions.rows.map((prev) => (
         <QuestionCard
           id={prev.question_id}
