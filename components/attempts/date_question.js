@@ -32,9 +32,10 @@ export default function DateQuestion({
   attempt_id,
   fragments_specified,
   prevalidated,
+  setAnswered,
+  setShowStatus,
 }) {
   const [answer, setAnswer] = useState("");
-  const [showStatus, setShowStatus] = useState(0);
   const submission = () => {
     console.log(answer);
     let question_correct = false;
@@ -78,12 +79,18 @@ export default function DateQuestion({
       }
     }
     answer_question(attempt_id, question_correct);
+    setAnswered((prev) => {
+      return prev + 1;
+    });
     if (question_correct) {
       setShowStatus(1);
     } else {
       setShowStatus(2);
     }
   };
+  useEffect(() => {
+    setAnswer("");
+  }, [question]);
   useEffect(() => {
     const ls = (event) => {
       if (event.code == "Enter") {
@@ -98,21 +105,17 @@ export default function DateQuestion({
   }, [answer]);
   return (
     <>
-      {showStatus == 0 && (
-        <div>
-          <h1>{question}</h1>
-          <BasicInput value={answer} setValue={setAnswer} />
-          <Button
-            onClick={() => {
-              submission();
-            }}
-          >
-            Odpowiedz
-          </Button>
-        </div>
-      )}
-      {showStatus == 1 && <h1>Poprawna odpowiedź</h1>}
-      {showStatus == 2 && <h1>Niepoprawna odpowiedź</h1>}
+      <div>
+        <h1>{question}</h1>
+        <BasicInput value={answer} setValue={setAnswer} />
+        <Button
+          onClick={() => {
+            submission();
+          }}
+        >
+          Odpowiedz
+        </Button>
+      </div>
     </>
   );
 }

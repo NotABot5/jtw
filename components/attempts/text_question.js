@@ -19,9 +19,14 @@ function make_basic_string(s1) {
     .replace("ć", "c");
 }
 
-export default function TextQuestion({ question, attempt_id, prevalidated }) {
+export default function TextQuestion({
+  question,
+  attempt_id,
+  prevalidated,
+  setAnswered,
+  setShowStatus,
+}) {
   const [answer, setAnswer] = useState("");
-  const [showStatus, setShowStatus] = useState(0);
   const submission = () => {
     let question_correct = false;
     const result1 = make_basic_string(answer);
@@ -35,7 +40,13 @@ export default function TextQuestion({ question, attempt_id, prevalidated }) {
       setShowStatus(2);
     }
     answer_question(attempt_id, question_correct);
+    setAnswered((prev) => {
+      return prev + 1;
+    });
   };
+  useEffect(() => {
+    setAnswer("");
+  }, [question]);
   useEffect(() => {
     const ls = (event) => {
       if (event.code == "Enter") {
@@ -50,21 +61,17 @@ export default function TextQuestion({ question, attempt_id, prevalidated }) {
   }, [answer]);
   return (
     <>
-      {showStatus == 0 && (
-        <div>
-          <h1>{question}</h1>
-          <BasicInput value={answer} setValue={setAnswer} id="odp" />
-          <Button
-            onClick={() => {
-              submission();
-            }}
-          >
-            Odpowiedz
-          </Button>
-        </div>
-      )}
-      {showStatus == 1 && <h1>Poprawna odpowiedź</h1>}
-      {showStatus == 2 && <h1>Niepoprawna odpowiedź</h1>}
+      <div>
+        <h1>{question}</h1>
+        <BasicInput value={answer} setValue={setAnswer} id="odp" />
+        <Button
+          onClick={() => {
+            submission();
+          }}
+        >
+          Odpowiedz
+        </Button>
+      </div>
     </>
   );
 }

@@ -1,11 +1,11 @@
 import { sql } from "@vercel/postgres";
-import TextQuestion from "./text_question";
-import ListQuestion from "./list_question";
-import DateQuestion from "./date_question";
+import AttemptClient from "./attempt_client";
+
 export default async function Attempt({ attempt_id }) {
   const response = (
     await sql`SELECT * FROM attempts WHERE attempt_id = ${attempt_id}`
   ).rows[0];
+  /*
   let comment = "";
   if (response.response_code == 1) {
     comment = "Nieprawidłowa odpowiedź";
@@ -33,37 +33,18 @@ export default async function Attempt({ attempt_id }) {
         </h1>
       </>
     );
-  }
-  const question_id = response.start_ids[response.completed];
+  }*/
+  const set_id = response.set_id;
+  const question_ids = response.start_ids;
   const question = (
-    await sql`SELECT * FROM questions WHERE ${question_id} = question_id`
-  ).rows[0];
-  const type = question.type;
+    await sql`SELECT * FROM questions WHERE ${set_id} = set_id AND invalidated = false`
+  ).rows;
   return (
-    <div>
-      <h1>{comment}</h1>
-      {type == 1 && (
-        <TextQuestion
-          question={question.question}
-          attempt_id={attempt_id}
-          prevalidated={question.answers}
-        />
-      )}
-      {type == 2 && (
-        <ListQuestion
-          question={question.question}
-          attempt_id={attempt_id}
-          prevalidated={question.answers}
-        />
-      )}
-      {type == 3 && (
-        <DateQuestion
-          question={question.question}
-          attempt_id={attempt_id}
-          fragments_specified={question.answers.length}
-          prevalidated={question.answers}
-        />
-      )}
-    </div>
+    <AttemptClient
+      questions={question}
+      question_ids={question_ids}
+      attempt_id={attempt_id}
+      response={response.response_code == 3 ? response : undefined}
+    />
   );
 }
