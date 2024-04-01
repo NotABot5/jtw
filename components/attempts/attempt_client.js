@@ -9,8 +9,9 @@ export default function AttemptClient({
   question_ids,
   attempt_id,
   response,
+  pre_answered = 0,
 }) {
-  const [answered, setAnswered] = useState(0);
+  const [answered, setAnswered] = useState(pre_answered);
   const [responseCode, setResponseCode] = useState(0);
   if (answered == question_ids.length) {
     if (response == undefined) {

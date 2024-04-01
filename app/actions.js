@@ -74,6 +74,6 @@ export async function answer_question(attempt_id, was_answer_correct) {
   }
   if (response.rows[0].completed + 1 >= response.rows[0].start_ids.length) {
     await sql`UPDATE attempts SET response_code = 3, end_timestamp = CURRENT_TIMESTAMP WHERE attempt_id = ${attempt_id}`;
-    revalidatePath(`/attempt/${attempt_id}`);
   }
+  revalidatePath(`/attempt/${attempt_id}`);
 }

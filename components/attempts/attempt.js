@@ -43,6 +43,7 @@ export default async function Attempt({ attempt_id }) {
     <AttemptClient
       questions={question}
       question_ids={question_ids}
+      pre_answered={response.completed}
       attempt_id={attempt_id}
       response={response.response_code == 3 ? response : undefined}
     />
