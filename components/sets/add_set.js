@@ -3,14 +3,15 @@ import StyledDialog from "../styled_dialog";
 import Input from "../input";
 import { useState } from "react";
 import { create_set } from "@/app/actions";
-import { useRouter } from "next/navigation";
+import LoadingScreen from "../loading_screen";
 
 export default function AddSet() {
   const [nazwa, setNazwa] = useState("");
   const [alertUser, setAlertUser] = useState(false);
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <>
+      {isLoading && <LoadingScreen />}
       {alertUser && (
         <h1 className="text-xs text-red-600">
           Nie podano nazwy zestawu lub nazwa jest za długa
@@ -25,9 +26,8 @@ export default function AddSet() {
             setAlertUser(true);
             return;
           }
+          setIsLoading(true);
           create_set(nazwa);
-          setAlertUser(false);
-          router.refresh();
         }}
         closeButtonText="Dodaj zestaw"
       >

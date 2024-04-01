@@ -7,7 +7,7 @@ export default function QuestionCard({ id, set_id, type, question, answers }) {
         {question}
       </span>
       <span className="w-96 p-2 ml-2">
-        {answers.map((prev, index) => (
+        {answers.map((prev) => (
           <h2 className="inline" key={crypto.randomUUID()}>{`${prev}, `}</h2>
         ))}
       </span>

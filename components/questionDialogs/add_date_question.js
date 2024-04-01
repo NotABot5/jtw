@@ -46,7 +46,7 @@ export default function AddDateQuestion({ set_id, setAlertUser }) {
       <Input value={rok} setValue={setRok}>
         Rok
       </Input>
-      <Input value={miesiac} setValue={setMiesiac} className="leading-none">
+      <Input value={miesiac} setValue={setMiesiac}>
         Miesiąc
         <OptionalTag />
       </Input>
