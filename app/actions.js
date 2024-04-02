@@ -21,7 +21,7 @@ export async function create_question(set_id, question, answers, type = 1) {
   let b = JSON.stringify(answers);
   let c = a.concat(b.slice(1, b.length - 1).concat("}"));
   await sql`INSERT INTO questions VALUES (${gen_id}, ${set_id}, ${type}, ${question}, ${c}, false)`;
-  revalidatePath(`/${set_id}`);
+  revalidatePath(`/${set_id}/modify`);
 }
 
 export async function invalidate_set(set_id) {
@@ -31,7 +31,7 @@ export async function invalidate_set(set_id) {
 
 export async function invalidate_question(question_id, set_id) {
   await sql`UPDATE questions SET invalidated = true WHERE question_id = ${question_id}`;
-  revalidatePath(`/${set_id}`);
+  revalidatePath(`/${set_id}/modify`);
 }
 
 export async function start_attempt(set_id, start_ids) {
