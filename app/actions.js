@@ -12,7 +12,7 @@ export async function create_set(set_name) {
   }
   await sql`INSERT INTO sets VALUES (${gen_id}, ${set_name}, false)`;
   revalidatePath("/");
-  redirect(`/${gen_id}`);
+  redirect(`/${gen_id}/modify`);
 }
 
 export async function create_question(set_id, question, answers, type = 1) {

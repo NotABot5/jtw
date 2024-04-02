@@ -2,17 +2,55 @@
 import TextQuestion from "./text_question";
 import ListQuestion from "./list_question";
 import DateQuestion from "./date_question";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import StartAttemptButton from "./start_attempt_button";
+import Link from "next/link";
+import Button from "../button";
+import { start_attempt } from "@/app/actions";
 
 export default function AttemptClient({
   questions,
   question_ids,
   attempt_id,
   response,
+  set_id,
   pre_answered = 0,
 }) {
   const [answered, setAnswered] = useState(pre_answered);
   const [responseCode, setResponseCode] = useState(0);
+  let new_questions_in_set = [];
+  useEffect(() => {
+    const ls = (event) => {
+      if (
+        event.code == "Enter" &&
+        answered == question_ids.length &&
+        response != undefined &&
+        (response.correct_answer_ids == null ||
+          response.correct_answer_ids.length != response.start_ids.length)
+      ) {
+        event.preventDefault();
+        new_questions_in_set =
+          response.correct_answer_ids == undefined ||
+          response.correct_answer_ids.length == 0
+            ? response.start_ids
+                .map((value) => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value)
+            : response.start_ids
+                .filter((id) => {
+                  return !response.correct_answer_ids.includes(id);
+                })
+                .map((value) => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value);
+        start_attempt(set_id, new_questions_in_set);
+      }
+    };
+    document.addEventListener("keydown", ls);
+    return () => {
+      document.removeEventListener("keydown", ls);
+    };
+  }, [answered, response]);
   if (answered == question_ids.length) {
     if (response == undefined) {
       return <h1>Ładowanie wyników...</h1>;
@@ -26,6 +64,21 @@ export default function AttemptClient({
         : response.correct_answer_ids.length;
     const all = response.start_ids.length;
     const percentage = Math.round((correct / all) * 1000) / 10;
+    new_questions_in_set =
+      response.correct_answer_ids == undefined ||
+      response.correct_answer_ids.length == 0
+        ? response.start_ids
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value)
+        : response.start_ids
+            .filter((id) => {
+              return !response.correct_answer_ids.includes(id);
+            })
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value);
+
     return (
       <>
         <h1>
@@ -34,15 +87,23 @@ export default function AttemptClient({
         <h1>
           Poprawne odpowiedzi: {correct}/{all} {`(${percentage}%)`}
         </h1>
+        {percentage != 100 && (
+          <StartAttemptButton
+            set_id={set_id}
+            button_text="Popraw błędne odpowiedzi"
+            questions_in_set={new_questions_in_set}
+          />
+        )}
+        <Link href={`/${set_id}`}>
+          <Button>Wróć na stronę zestawu</Button>
+        </Link>
       </>
     );
   }
   let question = questions.find((val) => {
     return val.question_id == question_ids[answered];
   });
-  //console.log(answered);
   let type = question.type;
-  //console.log(question);
   return (
     <div>
       {responseCode == 1 && <h1>Poprawna odpowiedź</h1>}
