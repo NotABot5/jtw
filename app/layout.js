@@ -15,9 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Link href="/">
-          <h1 className="text-center text-cyan-800 text-2xl m-2 font-black">
+          <h1 className="text-center text-cyan-800 text-2xl m-2 mb-0 font-black">
             JTW
           </h1>
+          <h2 className="text-center text-slate-400 text-xs mt-0 m-2">
+            In development
+          </h2>
           <hr />
         </Link>
         <div className="flex items-center justify-center min-h-[80vh]">
