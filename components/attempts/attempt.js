@@ -1,7 +1,9 @@
 import { sql } from "@vercel/postgres";
 import AttemptClient from "./attempt_client";
+import { unstable_noStore } from "next/cache";
 
 export default async function Attempt({ attempt_id }) {
+  unstable_noStore();
   const response = (
     await sql`SELECT * FROM attempts WHERE attempt_id = ${attempt_id}`
   ).rows[0];
