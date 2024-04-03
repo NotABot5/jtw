@@ -83,10 +83,10 @@ export default function AttemptClient({
 
     return (
       <>
-        <h1>
+        <h1 className="text-sm text-slate-400">
           Quiz zakończony w czasie {m != 0 && `${m}m`} {s}s
         </h1>
-        <h1>
+        <h1 className="text-2xl font-semibold text-cyan-800 mb-6 mt-1">
           Poprawne odpowiedzi: {correct}/{all} {`(${percentage}%)`}
         </h1>
         {percentage != 100 && (
@@ -108,13 +108,6 @@ export default function AttemptClient({
   let type = question.type;
   return (
     <div>
-      {responseCode == 1 && <h1>Poprawna odpowiedź {`(${given})`}</h1>}
-      {responseCode == 2 && (
-        <h1>
-          Błędna odpowiedź {`(${given})`}, poprawna odpowiedź to:{" "}
-          {previousAnswer}
-        </h1>
-      )}
       {type == 1 && (
         <TextQuestion
           question={question.question}
@@ -149,6 +142,15 @@ export default function AttemptClient({
           setGiven={setGiven}
         />
       )}
+      {responseCode == 1 && (
+        <h1 className="text-sm mt-8 text-green-700">{`${given}`}</h1>
+      )}
+      {responseCode == 2 && (
+        <h1 className="text-sm mt-8 text-green-700">
+          <s className="text-red-600">{`(${given})`}</s> {previousAnswer}
+        </h1>
+      )}
+      {responseCode == 0 && <div className="mt-12" />}
     </div>
   );
 }

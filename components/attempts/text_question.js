@@ -71,7 +71,7 @@ export default function TextQuestion({
   return (
     <>
       <div>
-        <h1>{question}</h1>
+        <h1 className="text-xl text-cyan-800">{question}</h1>
         <BasicInput value={answer} setValue={setAnswer} id="odp" />
         <Button
           onClick={() => {
