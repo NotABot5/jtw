@@ -4,17 +4,17 @@ import MultiInput from "../multi_input";
 import { useState } from "react";
 import { create_question } from "@/app/actions";
 import { useRouter } from "next/navigation";
-import StyledDialog from "../styled_dialog";
+import BasicStyledDialog from "../basic_styled_dialog";
 
 export default function AddTextQuestion({ set_id, setAlertUser }) {
   const [pytanie, setPytanie] = useState("");
   const [odpowiedzi, setOdpowiedzi] = useState([""]);
   const router = useRouter();
   return (
-    <StyledDialog
+    <BasicStyledDialog
       title="Nowe pytanie"
       description="Tu podaj dane do nowego pytania tekstowego"
-      trigger_text="Dodaj pytanie tekstowe"
+      trigger_text="Tekstowe"
       closeButtonAction={() => {
         if (odpowiedzi.length < 1 || odpowiedzi.includes("") || pytanie == "") {
           setAlertUser(true);
@@ -34,6 +34,6 @@ export default function AddTextQuestion({ set_id, setAlertUser }) {
       <MultiInput value={odpowiedzi} setValue={setOdpowiedzi}>
         Możliwe odpowiedzi
       </MultiInput>
-    </StyledDialog>
+    </BasicStyledDialog>
   );
 }

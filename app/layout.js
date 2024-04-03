@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
             JTW
           </h1>
           <h2 className="text-center text-slate-400 text-xs mt-0 m-2">
-            In development
+            in development
           </h2>
           <hr />
         </Link>

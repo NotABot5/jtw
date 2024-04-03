@@ -3,7 +3,7 @@ import Input from "../input";
 import { useState } from "react";
 import { create_question } from "@/app/actions";
 import { useRouter } from "next/navigation";
-import StyledDialog from "../styled_dialog";
+import BasicStyledDialog from "../basic_styled_dialog";
 import OptionalTag from "../optional_tag";
 
 export default function AddDateQuestion({ set_id, setAlertUser }) {
@@ -13,10 +13,10 @@ export default function AddDateQuestion({ set_id, setAlertUser }) {
   const [dzien, setDzien] = useState("");
   const router = useRouter();
   return (
-    <StyledDialog
+    <BasicStyledDialog
       title="Nowe pytanie"
       description="Tu podaj dane do pytania o datę"
-      trigger_text="Dodaj pytanie o datę"
+      trigger_text="Data"
       closeButtonAction={() => {
         let odpowiedzi = [""];
         if (!/^[0-9]*$/.test(rok) || rok == "" || pytanie == "" || rok > 2050) {
@@ -54,6 +54,6 @@ export default function AddDateQuestion({ set_id, setAlertUser }) {
         Dzień
         <OptionalTag />
       </Input>
-    </StyledDialog>
+    </BasicStyledDialog>
   );
 }

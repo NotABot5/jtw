@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       animation: {
         appear: "shiftIn .15s ease-out",
+        appearDown: "shiftInDown .2s ease-out",
         fade: "fadeIn .15s ease-out",
       },
       keyframes: {
@@ -18,6 +19,13 @@ module.exports = {
             top: "49%",
           },
           to: { opacity: 1 },
+        },
+        shiftInDown: {
+          from: {
+            opacity: 0,
+            transform: "translateY(2px)",
+          },
+          to: { opacity: 1, transform: "translateY(0px)" },
         },
         fadeIn: {
           from: { opacity: 0 },

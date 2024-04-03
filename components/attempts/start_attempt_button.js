@@ -11,6 +11,7 @@ export default function StartAttemptButton({
       onClick={() => {
         start_attempt(set_id, questions_in_set);
       }}
+      autoFocus
     >
       {button_text}
     </Button>

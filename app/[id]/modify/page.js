@@ -29,6 +29,7 @@ export default async function SetModificationPage({ params }) {
       <h1 className="text-2xl font-semibold text-cyan-800">
         {row_ct.rows[0].set_name}
       </h1>
+      <AddQuestionsBox set_id={my_id} />
       {relevant_questions.rows.map((prev) => (
         <QuestionCard
           id={prev.question_id}
@@ -39,7 +40,6 @@ export default async function SetModificationPage({ params }) {
           key={crypto.randomUUID()}
         />
       ))}
-      <AddQuestionsBox set_id={my_id} />
     </>
   );
 }

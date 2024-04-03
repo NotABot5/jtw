@@ -3,17 +3,17 @@
 import TextFileUpload from "../txt_upload";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import StyledDialog from "../styled_dialog";
+import BasicStyledDialog from "../basic_styled_dialog";
 import { create_question } from "@/app/actions";
 
 export default function AddFromFile({ set_id, setAlertUser }) {
   const [value, setValue] = useState("");
   const router = useRouter();
   return (
-    <StyledDialog
+    <BasicStyledDialog
       title="Pytania z pliku"
       description="Tu wrzuć odpowiednio sformatowany plik .txt z zestawem pytań i odpowiedzi"
-      trigger_text="Dodaj pytania z pliku"
+      trigger_text="Z pliku"
       closeButtonAction={() => {
         value.split(/\r?\n/).forEach((toAdd) => {
           let data = toAdd.split(" ");
@@ -107,6 +107,6 @@ export default function AddFromFile({ set_id, setAlertUser }) {
       closeButtonText="Dodaj pytania z pliku"
     >
       <TextFileUpload setValue={setValue} />
-    </StyledDialog>
+    </BasicStyledDialog>
   );
 }

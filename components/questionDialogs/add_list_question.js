@@ -4,17 +4,17 @@ import MultiInput from "../multi_input";
 import { useState } from "react";
 import { create_question } from "@/app/actions";
 import { useRouter } from "next/navigation";
-import StyledDialog from "../styled_dialog";
+import BasicStyledDialog from "../basic_styled_dialog";
 
 export default function AddListQuestion({ set_id, setAlertUser }) {
   const [pytanie, setPytanie] = useState("");
   const [odpowiedzi, setOdpowiedzi] = useState([""]);
   const router = useRouter();
   return (
-    <StyledDialog
+    <BasicStyledDialog
       title="Nowe pytanie"
       description="Tu podaj dane do pytania typu 'wymień'"
-      trigger_text="Dodaj pytanie typu 'wymień'"
+      trigger_text="Wymienianie"
       closeButtonAction={() => {
         if (odpowiedzi.length < 1 || odpowiedzi.includes("") || pytanie == "") {
           setAlertUser(true);
@@ -34,6 +34,6 @@ export default function AddListQuestion({ set_id, setAlertUser }) {
       <MultiInput value={odpowiedzi} setValue={setOdpowiedzi}>
         Do wymienienia
       </MultiInput>
-    </StyledDialog>
+    </BasicStyledDialog>
   );
 }
