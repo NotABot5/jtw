@@ -34,6 +34,8 @@ export default function DateQuestion({
   prevalidated,
   setAnswered,
   setShowStatus,
+  setPreviousAnswer,
+  setGiven,
 }) {
   const [answer, setAnswer] = useState("");
   const submission = () => {
@@ -65,10 +67,14 @@ export default function DateQuestion({
       if (year == prevalidated[0]) {
         question_correct = true;
       }
+      setPreviousAnswer(`${prevalidated[0]}`);
+      setGiven(`${year}`);
     } else if (day == "") {
       if (year == prevalidated[0] && month == prevalidated[1]) {
         question_correct = true;
       }
+      setPreviousAnswer(`${prevalidated[1]}.${prevalidated[0]}`);
+      setGiven(`${month}.${year}`);
     } else {
       if (
         year == prevalidated[0] &&
@@ -77,6 +83,10 @@ export default function DateQuestion({
       ) {
         question_correct = true;
       }
+      setPreviousAnswer(
+        `${prevalidated[2]}.${prevalidated[1]}.${prevalidated[0]}`
+      );
+      setGiven(`${day}.${month}.${year}`);
     }
     answer_question(attempt_id, question_correct);
     setAnswered((prev) => {

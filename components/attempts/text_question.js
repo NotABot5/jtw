@@ -25,6 +25,8 @@ export default function TextQuestion({
   prevalidated,
   setAnswered,
   setShowStatus,
+  setPreviousAnswer,
+  setGiven,
 }) {
   const [answer, setAnswer] = useState("");
   const submission = () => {
@@ -39,6 +41,13 @@ export default function TextQuestion({
     } else {
       setShowStatus(2);
     }
+    setGiven(answer);
+    let pv = "";
+    prevalidated.forEach((prev) => {
+      pv += prev;
+      pv += "/ ";
+    });
+    setPreviousAnswer(pv.substring(0, pv.length - 2));
     answer_question(attempt_id, question_correct);
     setAnswered((prev) => {
       return prev + 1;

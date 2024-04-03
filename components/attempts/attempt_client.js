@@ -18,6 +18,8 @@ export default function AttemptClient({
 }) {
   const [answered, setAnswered] = useState(pre_answered);
   const [responseCode, setResponseCode] = useState(0);
+  const [previousAnswer, setPreviousAnswer] = useState("");
+  const [given, setGiven] = useState("");
   let new_questions_in_set = [];
   useEffect(() => {
     const ls = (event) => {
@@ -106,8 +108,13 @@ export default function AttemptClient({
   let type = question.type;
   return (
     <div>
-      {responseCode == 1 && <h1>Poprawna odpowiedź</h1>}
-      {responseCode == 2 && <h1>Błędna odpowiedź</h1>}
+      {responseCode == 1 && <h1>Poprawna odpowiedź {`(${given})`}</h1>}
+      {responseCode == 2 && (
+        <h1>
+          Błędna odpowiedź {`(${given})`}, poprawna odpowiedź to:{" "}
+          {previousAnswer}
+        </h1>
+      )}
       {type == 1 && (
         <TextQuestion
           question={question.question}
@@ -115,6 +122,8 @@ export default function AttemptClient({
           prevalidated={question.answers}
           setAnswered={setAnswered}
           setShowStatus={setResponseCode}
+          setPreviousAnswer={setPreviousAnswer}
+          setGiven={setGiven}
         />
       )}
       {type == 2 && (
@@ -124,6 +133,8 @@ export default function AttemptClient({
           prevalidated={question.answers}
           setAnswered={setAnswered}
           setShowStatus={setResponseCode}
+          setPreviousAnswer={setPreviousAnswer}
+          setGiven={setGiven}
         />
       )}
       {type == 3 && (
@@ -134,6 +145,8 @@ export default function AttemptClient({
           prevalidated={question.answers}
           setAnswered={setAnswered}
           setShowStatus={setResponseCode}
+          setPreviousAnswer={setPreviousAnswer}
+          setGiven={setGiven}
         />
       )}
     </div>

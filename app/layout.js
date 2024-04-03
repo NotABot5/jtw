@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           </h1>
           <hr />
         </Link>
-        <div className="flex items-center justify-center min-h-[80vh]">
+        <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center mx-auto max-w-[640px] w-2/3 mt-4 my-2">
             {children}
           </div>
