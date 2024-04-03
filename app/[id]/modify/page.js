@@ -1,8 +1,10 @@
 import QuestionCard from "@/components/questions/question_card";
 import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
 import AddQuestionsBox from "@/components/questionDialogs/add_questions_box";
 
 export default async function SetModificationPage({ params }) {
+  revalidatePath("/");
   const my_id = params.id;
   if (!/^[0-9]*$/.test(my_id)) {
     return (
