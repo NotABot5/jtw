@@ -24,7 +24,7 @@ export default function StyledDialog({
           <Dialog.Description className="text-xs mb-2 text-secondary">
             {description}
           </Dialog.Description>
-          <hr />
+          <hr className="border-primary border border-opacity-20" />
           {children}
           <div className="flex w-auto justify-end">
             <Dialog.Close asChild>

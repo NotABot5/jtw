@@ -25,7 +25,7 @@ export default function QuestionCard({ id, set_id, type, question, answers }) {
     ans = ans.slice(0, ans.length - 1);
   }
   return (
-    <div className="text-primary text-xs my-2 rounded flex items-center border border-primary w-full">
+    <div className="text-primary text-sm my-2 rounded flex items-center border border-primary w-full">
       <span className="w-52 mr-2 p-2 h-full border-r border-primary flex justify-center items-center justify-self-start">
         {question}
       </span>
