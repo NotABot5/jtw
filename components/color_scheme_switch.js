@@ -17,7 +17,7 @@ export default function ColorSchemeSwitch({ type }) {
     <>
       {type == "dark" && (
         <button
-          className="fixed text-primary -translate-y-11 translate-x-6"
+          className="fixed text-primary -translate-y-14 translate-x-4 h-12 w-12 flex justify-center items-center"
           onClick={() => setColorSchemeCookie("light")}
         >
           <SunIcon width={24} height={24} />
@@ -25,7 +25,7 @@ export default function ColorSchemeSwitch({ type }) {
       )}
       {type == "light" && (
         <button
-          className="fixed text-primary -translate-y-11 translate-x-6"
+          className="fixed text-primary -translate-y-14 translate-x-4 h-12 w-12 flex justify-center items-center"
           onClick={() => setColorSchemeCookie("dark")}
         >
           <MoonIcon width={24} height={24} />
