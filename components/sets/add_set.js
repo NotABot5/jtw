@@ -22,7 +22,7 @@ export default function AddSet() {
         description="Tu podaj dane do nowego zestawu"
         trigger_text="Dodaj zestaw"
         closeButtonAction={() => {
-          if (nazwa == "" || nazwa.length > 30) {
+          if (nazwa == "" || nazwa.length > 15) {
             setAlertUser(true);
             return;
           }

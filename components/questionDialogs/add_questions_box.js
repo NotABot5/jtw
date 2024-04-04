@@ -12,8 +12,8 @@ export default function AddQuestionsBox({ set_id }) {
     <div className="inline-flex ml-4 justify-center">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button className="mb-4 rounded-full font-light bg-background border border-primary text-primary text-2xl w-8 h-8 flex items-center justify-center hover:bg-highlight transition-all">
-            +
+          <button className="mb-4 rounded-full p-4 font-light bg-background border border-primary text-primary text-2xl w-8 h-8 flex items-center justify-center hover:bg-highlight transition-all">
+            <h1>+</h1>
           </button>
         </DropdownMenu.Trigger>
 
