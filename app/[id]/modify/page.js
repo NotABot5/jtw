@@ -26,10 +26,18 @@ export default async function SetModificationPage({ params }) {
     await sql`SELECT * FROM questions WHERE set_id = ${my_id} AND invalidated = FALSE`;
   return (
     <>
-      <h1 className="text-2xl font-semibold text-cyan-800">
+      <h1 className="text-2xl font-semibold inline text-cyan-800 ">
         {row_ct.rows[0].set_name}
       </h1>
+
       <AddQuestionsBox set_id={my_id} />
+      {relevant_questions.rowCount == 0 && (
+        <h2 className="text-sm text-slate-400">
+          W tym zestawie nie ma jeszcze żadnych pytań. Aby dodać nowe pytania
+          albo zaimportować je z pliku, wciśnij przycisk "+" na prawo od nazwy
+          zestawu.
+        </h2>
+      )}
       {relevant_questions.rows.map((prev) => (
         <QuestionCard
           id={prev.question_id}

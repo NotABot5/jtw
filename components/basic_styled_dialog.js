@@ -14,7 +14,9 @@ export default function BasicStyledDialog({
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button>{trigger_text}</button>
+        <button className="w-full text-start pl-2 py-1 text-cyan-800 hover:bg-slate-200 transition-all rounded mr-8 text-sm my-1">
+          {trigger_text}
+        </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className=" bg-slate-950 opacity-40 fixed inset-0 animate-fade" />
