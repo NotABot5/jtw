@@ -45,7 +45,7 @@ export default function TextQuestion({
     let pv = "";
     prevalidated.forEach((prev) => {
       pv += prev;
-      pv += "/ ";
+      pv += " / ";
     });
     setPreviousAnswer(pv.substring(0, pv.length - 2));
     answer_question(attempt_id, question_correct);

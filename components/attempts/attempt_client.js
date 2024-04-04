@@ -55,7 +55,11 @@ export default function AttemptClient({
   }, [answered, response]);
   if (answered == question_ids.length) {
     if (response == undefined) {
-      return <h1>Ładowanie wyników...</h1>;
+      return (
+        <h1 className="text-2xl font-semibold text-primary">
+          Ładowanie wyników...
+        </h1>
+      );
     }
     const date_diff = response.end_timestamp - response.timestamp_start;
     const m = Math.floor(date_diff / 60000);
