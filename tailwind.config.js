@@ -12,6 +12,15 @@ module.exports = {
         appearDown: "shiftInDown .2s ease-out",
         fade: "fadeIn .15s ease-out",
       },
+      colors: {
+        primary: "rgb(var(--color-primary) / <alpha-value>)",
+        "primary-light": "rgb(var(--color-primary-light) / <alpha-value>)",
+        "primary-dark": "rgb(var(--color-primary-dark) / <alpha-value>)",
+        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+        overlay: "rgb(var(--color-overlay) / <alpha-value>)",
+        background: "rgb(var(--color-background) / <alpha-value>)",
+        highlight: "rgb(var(--color-highlight) / <alpha-value>)",
+      },
       keyframes: {
         shiftIn: {
           from: {

@@ -23,7 +23,7 @@ export default function MultiInput({ children, value, setValue }) {
   };
   return (
     <fieldset className="m-2 w-full">
-      <h2 className="mb-4 text-cyan-800 font-medium mx-auto text-start">
+      <h2 className="mb-4 text-primary font-medium mx-auto text-start">
         {children}
       </h2>
       {value.map((prev, index) => {
@@ -35,10 +35,10 @@ export default function MultiInput({ children, value, setValue }) {
             <input
               value={prev}
               onChange={(event) => handleChange(index, event)}
-              className="p-1 mr-2 rounded border border-slate-400 w-5/6 text-cyan-800"
+              className="p-1 mr-2 rounded border border-secondary w-5/6 bg-background text-primary"
             />
             <button
-              className="justify-self-end rounded font-normal bg-white border border-slate-400 text-cyan-800 text-xl w-8 h-8 flex items-center justify-center hover:bg-slate-400 transition-all"
+              className="justify-self-end rounded font-normal bg-background border border-secondary text-primary text-xl w-8 h-8 flex items-center justify-center hover:bg-secondary transition-all"
               onClick={() => remove(index)}
             >
               -
@@ -48,7 +48,7 @@ export default function MultiInput({ children, value, setValue }) {
       })}
       {value.length < 6 && (
         <button
-          className="rounded font-normal bg-white border border-slate-400 text-cyan-800 text-xl ml-2 w-8 h-8 flex items-center justify-center hover:bg-slate-400 transition-all"
+          className="rounded font-normal bg-background border border-secondary text-primary text-xl ml-2 w-8 h-8 flex items-center justify-center hover:bg-secondary transition-all"
           onClick={() => add()}
         >
           +

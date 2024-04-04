@@ -83,10 +83,10 @@ export default function AttemptClient({
 
     return (
       <>
-        <h1 className="text-sm text-slate-400">
+        <h1 className="text-sm text-secondary">
           Quiz zakończony w czasie {m != 0 && `${m}m`} {s}s
         </h1>
-        <h1 className="text-2xl font-semibold text-cyan-800 mb-6 mt-1">
+        <h1 className="text-2xl font-semibold text-primary mb-6 mt-1">
           Poprawne odpowiedzi: {correct}/{all} {`(${percentage}%)`}
         </h1>
         {percentage != 100 && (

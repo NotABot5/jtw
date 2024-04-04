@@ -12,7 +12,7 @@ export default function Button({
           autoFocus
           onClick={onClick}
           aria-label={ariaLabel}
-          className="bg-cyan-800 text-white p-2 m-2 px-6 rounded hover:bg-cyan-700 transition-all focus:shadow-cyan-900"
+          className="bg-primary text-background p-2 m-2 px-6 rounded hover:bg-primary-light transition-all focus:shadow-primary-dark"
         >
           {children}
         </button>
@@ -21,7 +21,7 @@ export default function Button({
         <button
           onClick={onClick}
           aria-label={ariaLabel}
-          className="bg-cyan-800 text-white p-2 m-2 px-6 rounded hover:bg-cyan-700 transition-all focus:shadow-cyan-900"
+          className="bg-primary text-background p-2 m-2 px-6 rounded hover:bg-primary-light transition-all focus:shadow-primary-dark"
         >
           {children}
         </button>

@@ -1,6 +1,7 @@
 "use server";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function create_set(set_name) {
@@ -78,4 +79,8 @@ export async function answer_question(attempt_id, was_answer_correct) {
     await sql`UPDATE attempts SET response_code = 3, end_timestamp = CURRENT_TIMESTAMP WHERE attempt_id = ${attempt_id}`;
   }
   revalidatePath(`/attempt/${attempt_id}`);
+}
+
+export async function setColorSchemeCookie(color_scheme) {
+  cookies().set("color_scheme", color_scheme);
 }

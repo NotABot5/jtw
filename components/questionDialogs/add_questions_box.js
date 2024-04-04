@@ -12,13 +12,13 @@ export default function AddQuestionsBox({ set_id }) {
     <div className="inline-flex ml-4 justify-center">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button className="my-4 rounded-full font-light bg-white border border-cyan-800 text-cyan-800 text-2xl w-8 h-8 flex items-center justify-center hover:bg-slate-400 transition-all">
+          <button className="my-4 rounded-full font-light bg-background border border-primary text-primary text-2xl w-8 h-8 flex items-center justify-center hover:bg-highlight transition-all">
             +
           </button>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
-          <DropdownMenu.Content className="relative animate-appearDown shadow-xl border-solid border border-cyan-800 rounded-lg mt-2 bg-white p-4">
+          <DropdownMenu.Content className="relative animate-appearDown shadow-xl border-solid border border-primary rounded-lg mt-2 bg-background p-4">
             <AddTextQuestion set_id={set_id} setAlertUser={setAlertUser} />
             <hr />
             <AddListQuestion set_id={set_id} setAlertUser={setAlertUser} />

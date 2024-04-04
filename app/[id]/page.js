@@ -8,7 +8,7 @@ export default async function SetPage({ params }) {
   const my_id = params.id;
   if (!/^[0-9]*$/.test(my_id)) {
     return (
-      <h1 className="text-2xl font-semibold text-cyan-800">
+      <h1 className="text-2xl font-semibold text-primary">
         Ta strona nie istnieje
       </h1>
     );
@@ -17,7 +17,7 @@ export default async function SetPage({ params }) {
     await sql`SELECT * FROM sets WHERE set_id = ${my_id} AND invalidated = FALSE`;
   if (row_ct.rowCount == 0) {
     return (
-      <h1 className="text-2xl font-semibold text-cyan-800">
+      <h1 className="text-2xl font-semibold text-primary">
         Ta strona nie istnieje
       </h1>
     );
@@ -29,7 +29,7 @@ export default async function SetPage({ params }) {
   }
   return (
     <>
-      <h1 className="text-2xl font-semibold text-cyan-800">
+      <h1 className="text-2xl font-semibold text-primary">
         {row_ct.rows[0].set_name}
       </h1>
       <StartAttemptButton

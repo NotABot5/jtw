@@ -6,10 +6,10 @@ export default async function Home() {
   const set_list = await sql`SELECT * FROM sets WHERE invalidated = FALSE`;
   return (
     <>
-      <h1 className="text-2xl font-semibold text-cyan-800">
+      <h1 className="text-2xl font-semibold text-primary">
         Widok zestawów pytań
       </h1>
-      <h3 className="text-xs mb-2 text-slate-400">
+      <h3 className="text-xs mb-2 text-secondary">
         Aby dodać pytania, wejdź do istniejącego zestawu lub stwórz nowy
       </h3>
       <div className="flex justify-center items-center w-full">

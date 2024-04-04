@@ -4,7 +4,7 @@ export default function BasicInput({ value, setValue, placeholder = "" }) {
     <fieldset className="my-4 mx-2 flex items-center justify-center gap-5">
       <input
         autoFocus
-        className="p-1 m-1 rounded border border-slate-400 w-full text-cyan-800"
+        className="p-1 m-1 rounded border border-secondary w-full bg-background text-primary"
         value={value}
         onChange={(event) => {
           setValue(event.target.value);

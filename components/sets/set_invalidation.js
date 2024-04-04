@@ -14,16 +14,16 @@ export default function SetInvalidation({ id, setIsDisabled }) {
           </button>
         </AlertDialog.Trigger>
         <AlertDialog.Portal>
-          <AlertDialog.Overlay className=" bg-slate-950 opacity-40 fixed inset-0 animate-fade" />
-          <AlertDialog.Content className="animate-appear fixed pt-3 top-[50%] left-[50%] max-h-[85vh] w-[90vw] shadow-lg border-solid border-2 border-cyan-800 max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-4">
-            <AlertDialog.Title className="text-2xl font-semibold text-cyan-800">
+          <AlertDialog.Overlay className=" bg-overlay opacity-40 fixed inset-0 animate-fade" />
+          <AlertDialog.Content className="animate-appear fixed pt-3 top-[50%] left-[50%] max-h-[85vh] w-[90vw] shadow-lg border-solid border-2 border-primary max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-background p-4">
+            <AlertDialog.Title className="text-2xl font-semibold text-primary">
               Czy chcesz usunąć zestaw?
             </AlertDialog.Title>
-            <AlertDialog.Description className="text-xs mb-2 text-slate-400">
+            <AlertDialog.Description className="text-xs mb-2 text-secondary">
               Usunięcie zestawu pytań jest działaniem nieodwracalnym
             </AlertDialog.Description>
             <AlertDialog.Cancel asChild>
-              <button className="p-2 mr-2 text-cyan-800 hover:text-cyan-400 transition-all ">
+              <button className="p-2 mr-2 text-primary hover:text-cyan-400 transition-all ">
                 Anuluj
               </button>
             </AlertDialog.Cancel>
