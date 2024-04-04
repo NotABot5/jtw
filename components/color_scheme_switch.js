@@ -17,18 +17,18 @@ export default function ColorSchemeSwitch({ type }) {
     <>
       {type == "dark" && (
         <button
-          className="fixed text-primary -translate-y-10 translate-x-4"
+          className="fixed text-primary -translate-y-11 translate-x-6"
           onClick={() => setColorSchemeCookie("light")}
         >
-          <SunIcon />
+          <SunIcon width={24} height={24} />
         </button>
       )}
       {type == "light" && (
         <button
-          className="fixed text-primary -translate-y-10 translate-x-4"
+          className="fixed text-primary -translate-y-11 translate-x-6"
           onClick={() => setColorSchemeCookie("dark")}
         >
-          <MoonIcon />
+          <MoonIcon width={24} height={24} />
         </button>
       )}
     </>

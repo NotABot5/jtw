@@ -18,7 +18,7 @@ export default function AddQuestionsBox({ set_id }) {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
-          <DropdownMenu.Content className="relative animate-appearDown shadow-xl border-solid border border-primary rounded-lg mt-2 bg-background p-4">
+          <DropdownMenu.Content className="relative animate-appearDown shadow-lg border-solid border border-primary rounded-lg mt-2 bg-background py-1 px-2">
             <AddTextQuestion set_id={set_id} setAlertUser={setAlertUser} />
             <hr />
             <AddListQuestion set_id={set_id} setAlertUser={setAlertUser} />
