@@ -22,6 +22,12 @@ export default function RootLayout({ children }) {
   }
   return (
     <html lang="en" color-s={type} className="bg-background transition-all">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="9qLFuQ6QgKGRCvY0YDiN7P_tPbeMsNSA4asgFOoCDYQ"
+        />
+      </head>
       <body className={inter.className}>
         <nav className="fixed w-screen bg-background">
           <Link href="/">
