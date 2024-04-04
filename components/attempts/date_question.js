@@ -39,7 +39,6 @@ export default function DateQuestion({
 }) {
   const [answer, setAnswer] = useState("");
   const submission = () => {
-    console.log(answer);
     let question_correct = false;
     let full_date = make_date(answer);
     let year = "";

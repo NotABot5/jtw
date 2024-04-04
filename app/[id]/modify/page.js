@@ -34,7 +34,7 @@ export default async function SetModificationPage({ params }) {
       {relevant_questions.rowCount == 0 && (
         <h2 className="text-sm text-slate-400">
           W tym zestawie nie ma jeszcze żadnych pytań. Aby dodać nowe pytania
-          albo zaimportować je z pliku, wciśnij przycisk "+" na prawo od nazwy
+          albo zaimportować je z pliku, wciśnij przycisk + na prawo od nazwy
           zestawu.
         </h2>
       )}

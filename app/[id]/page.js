@@ -3,7 +3,6 @@ import Link from "next/link";
 import Button from "@/components/button";
 import { redirect } from "next/navigation";
 import StartAttemptButton from "@/components/attempts/start_attempt_button";
-import AddDateQuestion from "@/components/questionDialogs/add_date_question";
 
 export default async function SetPage({ params }) {
   const my_id = params.id;
