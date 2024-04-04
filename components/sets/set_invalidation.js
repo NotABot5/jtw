@@ -9,7 +9,10 @@ export default function SetInvalidation({ id, setIsDisabled }) {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger asChild>
-          <button className="p-2 pr-0 text-red-600 hover:text-red-300 transition-all">
+          <button
+            className="p-2 pr-0 text-red-600 hover:text-red-300 transition-all"
+            title="remove set"
+          >
             <TrashIcon />
           </button>
         </AlertDialog.Trigger>

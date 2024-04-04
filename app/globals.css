@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  text-size-adjust: 100%;
+}
+
 @layer base {
   :root {
     --color-primary: 7 89 133;
