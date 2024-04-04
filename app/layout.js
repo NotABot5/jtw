@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     type = color_scheme.value;
   }
   return (
-    <html lang="en" color-s={type} className="bg-background">
+    <html lang="en" color-s={type} className="bg-background transition-all">
       <body className={inter.className}>
         <nav className="fixed w-screen bg-background">
           <Link href="/">

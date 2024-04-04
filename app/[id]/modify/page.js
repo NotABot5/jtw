@@ -34,8 +34,7 @@ export default async function SetModificationPage({ params }) {
       {relevant_questions.rowCount == 0 && (
         <h2 className="text-sm text-secondary">
           W tym zestawie nie ma jeszcze żadnych pytań. Aby dodać nowe pytania
-          albo zaimportować je z pliku, wciśnij przycisk + na prawo od nazwy
-          zestawu.
+          albo zaimportować je z pliku, wciśnij przycisk + przy nazwie zestawu.
         </h2>
       )}
       {relevant_questions.rows.map((prev) => (
