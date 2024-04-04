@@ -2,8 +2,17 @@
 import { setColorSchemeCookie } from "@/app/actions";
 import { MoonIcon } from "@radix-ui/react-icons";
 import { SunIcon } from "@radix-ui/react-icons";
+import { useEffect } from "react";
 
 export default function ColorSchemeSwitch({ type }) {
+  useEffect(() => {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      setColorSchemeCookie("dark");
+    }
+  }, []);
   return (
     <>
       {type == "dark" && (
