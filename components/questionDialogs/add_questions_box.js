@@ -9,30 +9,36 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 export default function AddQuestionsBox({ set_id }) {
   const [alertUser, setAlertUser] = useState(false);
   return (
-    <div className="inline-flex ml-4 justify-center">
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild>
-          <button className="mb-4 rounded-full p-4 font-light bg-background border border-primary text-primary text-2xl w-8 h-8 flex items-center justify-center hover:bg-highlight transition-all">
-            <h1>+</h1>
-          </button>
-        </DropdownMenu.Trigger>
+    <>
+      <div className="inline-flex ml-4 justify-center">
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger asChild>
+            <button className="mb-4 rounded-full p-4 font-light bg-background border border-primary text-primary text-2xl w-8 h-8 flex items-center justify-center hover:bg-highlight transition-all">
+              <h1>+</h1>
+            </button>
+          </DropdownMenu.Trigger>
 
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content className="relative animate-appearDown shadow-lg border-solid border border-primary rounded-lg mt-2 bg-background py-1 px-2">
-            <AddTextQuestion set_id={set_id} setAlertUser={setAlertUser} />
-            <hr />
-            <AddListQuestion set_id={set_id} setAlertUser={setAlertUser} />
-            <hr />
-            <AddDateQuestion set_id={set_id} setAlertUser={setAlertUser} />
-            <hr />
-            <AddFromFile set_id={set_id} setAlertUser={setAlertUser} />
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
-      </DropdownMenu.Root>
-
+          <DropdownMenu.Portal>
+            <DropdownMenu.Content className="relative animate-appearDown shadow-lg border-solid border border-primary rounded-lg mt-2 bg-background py-1 px-2">
+              <AddTextQuestion set_id={set_id} setAlertUser={setAlertUser} />
+              <hr />
+              <AddListQuestion set_id={set_id} setAlertUser={setAlertUser} />
+              <hr />
+              <AddDateQuestion set_id={set_id} setAlertUser={setAlertUser} />
+              <hr />
+              <AddFromFile set_id={set_id} setAlertUser={setAlertUser} />
+            </DropdownMenu.Content>
+          </DropdownMenu.Portal>
+        </DropdownMenu.Root>
+      </div>
       {alertUser && (
-        <h3>Nie można było dodać pytania, ponieważ wejście było niepoprawne</h3>
+        <>
+          <br />
+          <h3 className="text-xs text-red-600 mb-2 block">
+            Nie można było dodać pytania, ponieważ wejście było niepoprawne
+          </h3>
+        </>
       )}
-    </div>
+    </>
   );
 }
