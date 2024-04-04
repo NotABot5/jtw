@@ -10,6 +10,7 @@ export const metadata = {
   title: "JTW - Just The Wisdom",
   description:
     "Aplikacja do tworzenia i rozwiązywania zestawów pytań przygotowujących do sprawdzianów",
+  icons: { icon: "./favicon.ico" },
 };
 
 export default function RootLayout({ children }) {
