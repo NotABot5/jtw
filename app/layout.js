@@ -3,6 +3,8 @@ import Link from "next/link";
 import "./globals.css";
 import ColorSchemeSwitch from "@/components/color_scheme_switch";
 import { cookies } from "next/headers";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +48,8 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </div>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
