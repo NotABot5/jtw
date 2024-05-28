@@ -31,8 +31,10 @@ export default function TextQuestion({
   const [answer, setAnswer] = useState("");
   const submission = () => {
     let question_correct = false;
-    const result1 = make_basic_string(answer);
-    const result2 = prevalidated.map((prev) => make_basic_string(prev));
+    const result1 = make_basic_string(answer).replace("s", "ś");
+    const result2 = prevalidated.map((prev) =>
+      make_basic_string(prev).replace("s", "ś")
+    );
     if (result2.includes(result1)) {
       question_correct = true;
     }
