@@ -109,6 +109,7 @@ export default function AttemptClient({
   let question = questions.find((val) => {
     return val.question_id == question_ids[answered];
   });
+  console.log(questions);
   let type = question.type;
   return (
     <div>

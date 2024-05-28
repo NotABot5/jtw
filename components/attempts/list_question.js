@@ -7,7 +7,7 @@ import BasicInput from "../basic_input";
 function make_basic_string(s1) {
   return s1
     .toLowerCase()
-    .replaceAll(/[\s~`!@#$%^&*(){}\[\];:"'<.>?\/\\|_+=-]/g, "")
+    .replaceAll(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, "")
     .replaceAll("ę", "e")
     .replaceAll("ó", "o")
     .replaceAll("ą", "a")
@@ -16,7 +16,8 @@ function make_basic_string(s1) {
     .replaceAll("ż", "z")
     .replaceAll("ź", "z")
     .replaceAll("ń", "n")
-    .replaceAll("ć", "c");
+    .replaceAll("ć", "c")
+    .replaceAll("ü", "u");
 }
 
 export default function ListQuestion({
@@ -31,11 +32,10 @@ export default function ListQuestion({
   const [answer, setAnswer] = useState("");
   const submission = () => {
     let question_correct = false;
-    const result1 = make_basic_string(answer)
+    const result1 = answer
       .split(",")
       .map((prev) => make_basic_string(prev))
       .sort();
-
     console.log(result1);
     const result2 = prevalidated.map((prev) => make_basic_string(prev)).sort();
     console.log(result2);

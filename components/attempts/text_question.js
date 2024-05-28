@@ -16,7 +16,8 @@ function make_basic_string(s1) {
     .replaceAll("ż", "z")
     .replaceAll("ź", "z")
     .replaceAll("ń", "n")
-    .replaceAll("ć", "c");
+    .replaceAll("ć", "c")
+    .replaceAll("ü", "u");
 }
 
 export default function TextQuestion({
