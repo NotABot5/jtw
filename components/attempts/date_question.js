@@ -66,13 +66,11 @@ export default function DateQuestion({
       if (year == prevalidated[0]) {
         question_correct = true;
       }
-      setPreviousAnswer(`${prevalidated[0]}`);
       setGiven(`${year}`);
     } else if (day == "") {
       if (year == prevalidated[0] && month == prevalidated[1]) {
         question_correct = true;
       }
-      setPreviousAnswer(`${prevalidated[1]}.${prevalidated[0]}`);
       setGiven(`${month}.${year}`);
     } else {
       if (
@@ -82,10 +80,16 @@ export default function DateQuestion({
       ) {
         question_correct = true;
       }
+      setGiven(`${day}.${month}.${year}`);
+    }
+    if (prevalidated[2] && prevalidated[1] && prevalidated[0]) {
       setPreviousAnswer(
         `${prevalidated[2]}.${prevalidated[1]}.${prevalidated[0]}`
       );
-      setGiven(`${day}.${month}.${year}`);
+    } else if (prevalidated[1] && prevalidated[0]) {
+      setPreviousAnswer(`${prevalidated[1]}.${prevalidated[0]}`);
+    } else if (prevalidated[0]) {
+      setPreviousAnswer(`${prevalidated[0]}`);
     }
     answer_question(attempt_id, question_correct);
     setAnswered((prev) => {
