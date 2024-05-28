@@ -7,16 +7,16 @@ import BasicInput from "../basic_input";
 function make_basic_string(s1) {
   return s1
     .toLowerCase()
-    .replace(/[\s~`!@#$%^&*(){}\[\];:"'<.>?\/\\|_+=-]/g, "")
-    .replace("ę", "e")
-    .replace("ó", "o")
-    .replace("ą", "a")
-    .replace("ś", "s")
-    .replace("ł", "l")
-    .replace("ż", "z")
-    .replace("ź", "z")
-    .replace("ń", "n")
-    .replace("ć", "c");
+    .replaceAll(/[\s~`!@#$%^&*(){}\[\];:"'<.>?\/\\|_+=-]/g, "")
+    .replaceAll("ę", "e")
+    .replaceAll("ó", "o")
+    .replaceAll("ą", "a")
+    .replaceAll("ś", "s")
+    .replaceAll("ł", "l")
+    .replaceAll("ż", "z")
+    .replaceAll("ź", "z")
+    .replaceAll("ń", "n")
+    .replaceAll("ć", "c");
 }
 
 export default function ListQuestion({

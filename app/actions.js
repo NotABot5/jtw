@@ -48,8 +48,8 @@ export async function start_attempt(set_id, start_ids) {
   await sql`INSERT INTO attempts (set_id, start_ids, attempt_id, completed, response_code) VALUES (${set_id}, ${JSON.stringify(
     start_ids
   )
-    .replace("[", "{")
-    .replace("]", "}")}, ${gen_id}, 0, 0)`;
+    .replaceAll("[", "{")
+    .replaceAll("]", "}")}, ${gen_id}, 0, 0)`;
   redirect(`/attempt/${gen_id}`);
 }
 
@@ -66,8 +66,8 @@ export async function answer_question(attempt_id, was_answer_correct) {
     }
 
     await sql`UPDATE attempts SET correct_answer_ids=${JSON.stringify(p)
-      .replace("[", "{")
-      .replace("]", "}")}, response_code = 2, completed = ${
+      .replaceAll("[", "{")
+      .replaceAll("]", "}")}, response_code = 2, completed = ${
       response.rows[0].completed + 1
     } WHERE attempt_id = ${attempt_id}`;
   } else {

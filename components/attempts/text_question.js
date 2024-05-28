@@ -7,16 +7,16 @@ import BasicInput from "../basic_input";
 function make_basic_string(s1) {
   return s1
     .toLowerCase()
-    .replace(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, "")
-    .replace("ę", "e")
-    .replace("ó", "o")
-    .replace("ą", "a")
-    .replace("ś", "s")
-    .replace("ł", "l")
-    .replace("ż", "z")
-    .replace("ź", "z")
-    .replace("ń", "n")
-    .replace("ć", "c");
+    .replaceAll(/[\s~`!@#$%^&*(){}\[\];:"'<,.>?\/\\|_+=-]/g, "")
+    .replaceAll("ę", "e")
+    .replaceAll("ó", "o")
+    .replaceAll("ą", "a")
+    .replaceAll("ś", "s")
+    .replaceAll("ł", "l")
+    .replaceAll("ż", "z")
+    .replaceAll("ź", "z")
+    .replaceAll("ń", "n")
+    .replaceAll("ć", "c");
 }
 
 export default function TextQuestion({
@@ -31,9 +31,9 @@ export default function TextQuestion({
   const [answer, setAnswer] = useState("");
   const submission = () => {
     let question_correct = false;
-    const result1 = make_basic_string(answer).replace("s", "ś");
+    const result1 = make_basic_string(answer).replaceAll("s", "ś");
     const result2 = prevalidated.map((prev) =>
-      make_basic_string(prev).replace("s", "ś")
+      make_basic_string(prev).replaceAll("s", "ś")
     );
     if (result2.includes(result1)) {
       question_correct = true;
