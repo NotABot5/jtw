@@ -46,7 +46,7 @@ export default function MultiInput({ children, value, setValue }) {
           </div>
         );
       })}
-      {value.length < 6 && (
+      {value.length < 10 && (
         <button
           className="rounded font-normal bg-background border border-secondary text-primary text-xl ml-2 w-8 h-8 flex items-center justify-center hover:bg-secondary transition-all"
           onClick={() => add()}
