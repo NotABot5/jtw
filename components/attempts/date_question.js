@@ -12,6 +12,7 @@ function make_date(s1) {
     .replaceAll("roku ", "")
     .replaceAll("rok ", "")
     .replaceAll(" ", ".")
+    .replaceAll(".0", ".")
     .replaceAll("xii", "12")
     .replaceAll("xi", "11")
     .replaceAll("ix", "9")
