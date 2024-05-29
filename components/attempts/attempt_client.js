@@ -14,6 +14,7 @@ export default function AttemptClient({
   attempt_id,
   response,
   set_id,
+  show_full_answers = false,
   pre_answered = 0,
 }) {
   const [answered, setAnswered] = useState(pre_answered);
@@ -147,9 +148,13 @@ export default function AttemptClient({
           setGiven={setGiven}
         />
       )}
-      {responseCode == 1 && (
-        <h1 className="text-sm mt-8 text-green-700">{`${given}`}</h1>
-      )}
+      {responseCode == 1 &&
+        (show_full_answers ? (
+          <h1 className="text-sm mt-8 text-green-700">{`${previousAnswer}`}</h1>
+        ) : (
+          <h1 className="text-sm mt-8 text-green-700">{`${given}`}</h1>
+        ))}
+
       {responseCode == 2 && (
         <h1 className="text-sm mt-8 text-green-700">
           <s className="text-red-600">{`(${given})`}</s> {previousAnswer}

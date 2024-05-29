@@ -37,7 +37,7 @@ export async function invalidate_question(question_id, set_id) {
   revalidatePath(`/${set_id}`);
 }
 
-export async function start_attempt(set_id, start_ids) {
+export async function start_attempt(set_id, start_ids, full_answers = false) {
   let gen_id = 0;
   let results = 1;
   while (results != 0) {
@@ -50,7 +50,9 @@ export async function start_attempt(set_id, start_ids) {
   )
     .replaceAll("[", "{")
     .replaceAll("]", "}")}, ${gen_id}, 0, 0)`;
-  redirect(`/attempt/${gen_id}`);
+  if (full_answers) {
+    redirect(`/attempt/${gen_id}/full_answers`);
+  } else redirect(`/attempt/${gen_id}`);
 }
 
 export async function answer_question(attempt_id, was_answer_correct) {

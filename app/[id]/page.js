@@ -41,6 +41,19 @@ export default async function SetPage({ params }) {
           .map((value) => ({ value, sort: Math.random() }))
           .sort((a, b) => a.sort - b.sort)
           .map(({ value }) => value)}
+        full_answers={false}
+      />
+      <StartAttemptButton
+        set_id={my_id}
+        questions_in_set={relevant_questions.rows
+          .map((prev) => {
+            return prev.question_id;
+          })
+          .map((value) => ({ value, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ value }) => value)}
+        full_answers={true}
+        button_text="Rozpocznij quiz z pełnymi odpowiedziami"
       />
       <Link href={`/${my_id}/modify`}>
         <Button>Modyfikuj zestaw</Button>

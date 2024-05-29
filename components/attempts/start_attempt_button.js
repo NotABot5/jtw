@@ -5,11 +5,12 @@ export default function StartAttemptButton({
   set_id,
   questions_in_set,
   button_text = "Rozpocznij quiz",
+  full_answers = false,
 }) {
   return (
     <Button
       onClick={() => {
-        start_attempt(set_id, questions_in_set);
+        start_attempt(set_id, questions_in_set, full_answers);
       }}
       autoFocus
     >
