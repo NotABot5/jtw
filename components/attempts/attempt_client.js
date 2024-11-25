@@ -110,7 +110,13 @@ export default function AttemptClient({
   let question = questions.find((val) => {
     return val.question_id == question_ids[answered];
   });
-  console.log(questions);
+  if (!question) {
+    return (
+      <h1 className="w-full h-full justify-center items-center text-primary">
+        Nie udało się pobrać pytania. Ponowne ładowanie...
+      </h1>
+    );
+  }
   let type = question.type;
   return (
     <div>

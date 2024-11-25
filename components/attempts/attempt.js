@@ -12,9 +12,8 @@ export default async function Attempt({
   ).rows[0];
   const set_id = response.set_id;
   const question_ids = response.start_ids;
-  const question = (
-    await sql`SELECT * FROM questions WHERE ${set_id} = set_id AND invalidated = false`
-  ).rows;
+  const question = (await sql`SELECT * FROM questions WHERE ${set_id} = set_id`)
+    .rows;
   return (
     <AttemptClient
       set_id={set_id}
