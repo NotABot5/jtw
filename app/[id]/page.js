@@ -41,7 +41,7 @@ export default async function SetPage({ params }) {
           .map((value) => ({ value, sort: Math.random() }))
           .sort((a, b) => a.sort - b.sort)
           .map(({ value }) => value)}
-        full_answers={false}
+        full_answers={true}
       />
       <StartAttemptButton
         set_id={my_id}
@@ -52,8 +52,8 @@ export default async function SetPage({ params }) {
           .map((value) => ({ value, sort: Math.random() }))
           .sort((a, b) => a.sort - b.sort)
           .map(({ value }) => value)}
-        full_answers={true}
-        button_text="Rozpocznij quiz z pełnymi odpowiedziami"
+        full_answers={false}
+        button_text="Rozpocznij quiz (odpowiedzi ukryte)"
       />
       <Link href={`/${my_id}/modify`}>
         <Button>Modyfikuj zestaw</Button>
