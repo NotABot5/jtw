@@ -120,6 +120,9 @@ export default function AttemptClient({
   let type = question.type;
   return (
     <div>
+      <h1 className="pb-1 text-secondary text-xs">
+        {answered}/{question_ids.length}
+      </h1>
       {type == 1 && (
         <TextQuestion
           question={question.question}
