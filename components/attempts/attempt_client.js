@@ -133,7 +133,8 @@ export default function AttemptClient({
   return (
     <div>
       <h1 className="pb-1 text-secondary text-xs">
-        {answered + 1}/{question_ids.length}
+        {answered + 1}/{question_ids.length} (
+        {type == 1 ? "tekstowe" : type == 2 ? "wymień" : "data"})
       </h1>
       {type == 1 && (
         <TextQuestion
