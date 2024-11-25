@@ -104,6 +104,18 @@ export default function AttemptClient({
         <Link href={`/${set_id}`}>
           <Button>Wróć na stronę zestawu</Button>
         </Link>
+        {responseCode == 1 &&
+          (show_full_answers ? (
+            <h1 className="text-sm mt-8 text-green-700">{`${previousAnswer}`}</h1>
+          ) : (
+            <h1 className="text-sm mt-8 text-green-700">{`${given}`}</h1>
+          ))}
+
+        {responseCode == 2 && (
+          <h1 className="text-sm mt-8 text-green-700">
+            <s className="text-red-600">{`(${given})`}</s> {previousAnswer}
+          </h1>
+        )}
       </>
     );
   }
@@ -121,7 +133,7 @@ export default function AttemptClient({
   return (
     <div>
       <h1 className="pb-1 text-secondary text-xs">
-        {answered}/{question_ids.length}
+        {answered + 1}/{question_ids.length}
       </h1>
       {type == 1 && (
         <TextQuestion
