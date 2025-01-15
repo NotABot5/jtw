@@ -83,7 +83,7 @@ export default function DateQuestion({
       year = full_date[0];
     }
     if (full_date.length == 2) {
-      if (fragments_specified == 2) {
+      if (fragments_specified >= 2) {
         month = full_date[0];
       }
       year = full_date[1];
@@ -117,6 +117,7 @@ export default function DateQuestion({
       }
       setGiven(`${day}.${month}.${year}`);
     }
+    console.log(question_correct, day, month, year);
     if (prevalidated[2] && prevalidated[1] && prevalidated[0]) {
       setPreviousAnswer(
         `${prevalidated[2]}.${prevalidated[1]}.${prevalidated[0]}`
